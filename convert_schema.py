@@ -6,17 +6,25 @@ es_schema = {
     'mappings': {}  
 }  
 
-for table_name, columns in osquery_schema.items():  
+for table_name, columns in osquery_schema.items(): 
     if isinstance(columns, list): 
         es_schema['mappings'][table_name] = {  
             'properties': {}  
         }  
         for col in columns: 
-            column_name, column = list(col.items())[0] 
-            data_type = column_type_mapping[column['type']] 
-            es_schema['mappings'][table_name]['properties'][column_name] = {  
-                'type': data_type  
-            }  
+            if isinstance(col, list): 
+                for col in col: 
+                    column_name, column = list(col.items())[0] 
+                    data_type = column_type_mapping[column['type']] 
+                    es_schema['mappings'][table_name]['properties'][column_name] = {  
+                        'type': data_type  
+                    }  
+            else: 
+                column_name, column = list(col.items())[0] 
+                data_type = column_type_mapping[column['type']] 
+                es_schema['mappings'][table_name]['properties'][column_name] = {  
+                    'type': data_type  
+                }  
     else: 
         es_schema['mappings'][table_name] = {  
             'properties': {}  
