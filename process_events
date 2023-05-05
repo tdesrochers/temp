@@ -1,0 +1,33 @@
+| Osquery Field Name | ECS Field Name | Description |
+| --- | --- | --- |
+| pid | process.pid | Process (or thread) ID |
+| path | process.executable.path | Path of executed file |
+| mode | process.executable.mode | File mode permissions |
+| cmdline | process.args | Command line arguments (argv) |
+| cmdline_size | process.args_size | Actual size (bytes) of command line arguments |
+| env | N/A | Not mapped to ECS field |
+| env_count | N/A | Not mapped to ECS field |
+| env_size | N/A | Not mapped to ECS field |
+| cwd | process.working_directory | The process current working directory |
+| auid | user.audit.id | Audit User ID at process start |
+| uid | user.id | User ID at process start |
+| euid | process.executable.uid | Effective user ID at process start |
+| gid | user.group.id | Group ID at process start |
+| egid | process.executable.gid | Effective group ID at process start |
+| owner_uid | file.owner.uid | File owner user ID |
+| owner_gid | file.owner.gid | File owner group ID |
+| atime | file.accessed | File last access in UNIX time |
+| mtime | file.modified | File modification in UNIX time |
+| ctime | file.changed | File last metadata change in UNIX time |
+| btime | file.created | File creation in UNIX time |
+| overflows | N/A | Not mapped to ECS field |
+| parent | process.parent.pid | Process parent's PID, or -1 if cannot be determined. |
+| time | @timestamp | Time of execution in UNIX time |
+| uptime | system.uptime.duration.ms | Time of execution in system uptime |
+| eid | N/A | Not mapped to ECS field |
+| status (DARWIN only) | N/A | Not mapped to ECS field |
+| fsuid (LINUX only) | process.executable.fsuid | Filesystem user ID at process start |
+| suid (LINUX only) | process.executable.suid | Saved user ID at process start |
+| fsgid (LINUX only) | process.executable.fsgid | Filesystem group ID at process start |
+| sgid (LINUX only) | process.executable.sgid | Saved group ID at process start |
+| syscall (LINUX only) | N/A | Not mapped to ECS field |
