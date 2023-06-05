@@ -1,0 +1,13 @@
+
+
+| userIdentity Type           | User Field                       |
+|-----------------------------|----------------------------------|
+| IAM User                    | userIdentity.userName            |
+| AWS Service                 | userIdentity.serviceName         |
+| AWS Root Account            | No specific field to monitor     |
+| Assumed Role                | userIdentity.sessionContext.sessionIssuer.userName |
+| STS Federated User          | userIdentity.sessionContext.sessionIssuer.userName |
+| STS Assumed Role Session    | userIdentity.sessionContext.sessionIssuer.userName |
+| AWSAccount                  | userIdentity.accountId           |
+
+For actions performed by the AWS account itself, the "accountId" field within the userIdentity object provides the account identifier associated with the action. By monitoring this field, you can track and analyze the actions performed at the account level in your AWS CloudTrail logs.
