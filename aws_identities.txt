@@ -11,3 +11,20 @@
 | AWSAccount                  | userIdentity.accountId           |
 
 For actions performed by the AWS account itself, the "accountId" field within the userIdentity object provides the account identifier associated with the action. By monitoring this field, you can track and analyze the actions performed at the account level in your AWS CloudTrail logs.
+
+
+The user fields mentioned in the previous table, such as `userIdentity.userName`, `userIdentity.serviceName`, `userIdentity.accountId`, and `userIdentity.sessionContext.sessionIssuer.userName`, represent different attributes that provide information about the user or service responsible for an action in AWS CloudTrail logs.
+
+The "principalId" field, on the other hand, is another attribute within the CloudTrail logs that can contain a unique identifier associated with the user or service performing the action. The specific value of the "principalId" field depends on the context of the action.
+
+In most cases, the "principalId" field will correspond to the user field mentioned in the table for the respective userIdentity type. For example:
+
+- For IAM Users: The "principalId" field will typically contain the unique identifier of the IAM user, while `userIdentity.userName` in the user field will contain the username of the IAM user.
+
+- For AWS Services: The "principalId" field will typically contain the service name, while `userIdentity.serviceName` in the user field will also contain the service name.
+
+- For AWS Account Actions: The "principalId" field will typically contain the AWS account identifier, while `userIdentity.accountId` in the user field will also contain the account identifier.
+
+- For Assumed Roles or STS Federated Users: The "principalId" field can contain the ARN of the assumed role or federated user session, while `userIdentity.sessionContext.sessionIssuer.userName` in the user field will contain the username associated with the session.
+
+It's important to note that the actual field names and values within CloudTrail logs may vary slightly depending on the specific log format and event details. However, the general concept remains the same: user fields provide descriptive information about the user or service, while the "principalId" field contains a unique identifier associated with the entity performing the action.
